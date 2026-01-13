@@ -109,7 +109,7 @@
     Luxuryモデル 特別再販！ 限定20個
   </div>
 
-  <section class="card">
+  <section class="card" id="orderSection">
     <h2>注文フォーム</h2>
     <form id="orderForm">
       <label for="model">モデルを選択</label>
@@ -141,10 +141,19 @@
 <footer>© rar-zar</footer>
 
 <script>
-  document.getElementById('orderForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert('抽選へのご参加ありがとうございました！抽選者はラーザー公式Instagramに注文した旨をお伝えください！');
-  });
+  const form = document.getElementById('orderForm');
+  const orderSection = document.getElementById('orderSection');
+
+  if (localStorage.getItem('rarZarOrdered')) {
+    orderSection.innerHTML = '<h2>注文フォーム</h2><p style="color:#3aa0ff;">すでに抽選に参加済みです。</p>';
+  } else {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('抽選へのご参加ありがとうございました！抽選参加者はラーザー公式Instagramまで抽選に参加した旨をお伝えください！');
+      localStorage.setItem('rarZarOrdered', 'true');
+      orderSection.innerHTML = '<h2>注文フォーム</h2><p style="color:#3aa0ff;">すでに抽選に参加済みです。</p>';
+    });
+  }
 </script>
 
 </body>
