@@ -12,7 +12,6 @@
       --sub: #9aa0aa;
       --accent: #3aa0ff;
     }
-
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -21,41 +20,32 @@
       line-height: 1.8;
       letter-spacing: 0.03em;
     }
-
     header {
       padding: 80px 24px 60px;
       text-align: center;
     }
-
     header h1 {
       font-size: clamp(42px, 8vw, 72px);
       font-weight: 600;
       letter-spacing: 0.15em;
       margin: 0;
     }
-
     header h1 span {
       background: linear-gradient(90deg, #9fd0ff, #3aa0ff, #9fd0ff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-
     header p {
       margin-top: 16px;
       color: var(--sub);
       font-size: 14px;
     }
-
     main {
       max-width: 860px;
       margin: 0 auto;
       padding: 0 20px 120px;
     }
-
-    section {
-      margin-top: 64px;
-    }
-
+    section { margin-top: 64px; }
     .card {
       background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
       border: 1px solid rgba(255,255,255,0.08);
@@ -63,7 +53,6 @@
       padding: 36px 32px;
       backdrop-filter: blur(6px);
     }
-
     h2 {
       font-size: 18px;
       font-weight: 500;
@@ -71,18 +60,12 @@
       margin-bottom: 20px;
       color: #cfd6e1;
     }
-
-    p {
-      margin: 0 0 16px;
-      font-size: 15px;
-    }
-
+    p { margin: 0 0 16px; font-size: 15px; }
     .price-table {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 16px;
     }
-
     .price {
       padding: 24px;
       border-radius: 14px;
@@ -90,19 +73,20 @@
       border: 1px solid rgba(255,255,255,0.08);
       text-align: center;
     }
-
-    .price h3 {
-      margin: 0 0 8px;
-      font-weight: 500;
+    .price h3 { margin: 0 0 8px; font-weight: 500; font-size: 14px; color: var(--sub); }
+    .price strong { font-size: 22px; color: var(--text); }
+    .buy-link {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 12px 28px;
+      border-radius: 999px;
+      border: 1px solid rgba(58,160,255,0.6);
+      color: var(--accent);
+      text-decoration: none;
       font-size: 14px;
-      color: var(--sub);
+      transition: 0.3s;
     }
-
-    .price strong {
-      font-size: 22px;
-      color: var(--text);
-    }
-
+    .buy-link:hover { background: rgba(58,160,255,0.08); }
     footer {
       text-align: center;
       padding: 40px 20px;
@@ -124,19 +108,9 @@
   <section>
     <div class="card">
       <h2>About rar-zar</h2>
-      <p>
-        rar-zar（ラーザー）は、日常に寄り添う
-        コンセプトアクセサリーブランドです。
-      </p>
-      <p>
-        アクセサリーを「飾るためのもの」ではなく、
-        気持ちや行動のきっかけになる存在として捉えています。
-      </p>
-      <p>
-        派手な機能や分かりやすい効果は語りません。
-        形、質感、重み、身につけたときの感覚を
-        丁寧に設計することを大切にしています。
-      </p>
+      <p>rar-zar（ラーザー）は、日常に寄り添うコンセプトアクセサリーブランドです。</p>
+      <p>アクセサリーを「飾るためのもの」ではなく、気持ちや行動のきっかけになる存在として捉えています。</p>
+      <p>派手な機能や分かりやすい効果は語りません。形、質感、重み、身につけたときの感覚を大切にしています。</p>
     </div>
   </section>
 
@@ -144,52 +118,29 @@
     <div class="card">
       <h2>Price</h2>
       <div class="price-table">
-        <div class="price">
-          <h3>Model "Light"</h3>
-          <strong>¥5,000</strong>
-        </div>
-        <div class="price">
-          <h3>Model "Soft"</h3>
-          <strong>¥10,000</strong>
-        </div>
-        <div class="price">
-          <h3>Model "Clear"</h3>
-          <strong>¥25,000</strong>
-        </div>
-         <div class="price">
-          <h3>Model "Grow"</h3>
-          <strong>¥45,000</strong>
-        </div>
-         <div class="price">
-          <h3>Model "Luxury"</h3>
-          <strong>¥70,000</strong>
-        </div>
+        <div class="price"><h3>Model "Light"</h3><strong>¥5,000</strong></div>
+        <div class="price"><h3>Model "Soft"</h3><strong>¥10,000</strong></div>
+        <div class="price"><h3>Model "Clear"</h3><strong>¥25,000</strong></div>
+        <div class="price"><h3>Model "Grow"</h3><strong>¥45,000</strong></div>
+        <div class="price"><h3>Model "Luxury"</h3><strong>¥70,000</strong></div>
       </div>
+      <a class="buy-link" href="buy.html">Go to Buy Page</a>
     </div>
   </section>
 
   <section>
     <div class="card">
       <h2>Message from the Founder</h2>
-      <p>
-        僕がラーザーを作ったのは、
-        毎日をほんの少し特別にしたいと思ったからです。
-      </p>
-      <p>
-        つけるだけで気分が少し変わる。
-        そんな小さなきっかけを、形にしました。
-      </p>
-      <p style="text-align:right; opacity:0.7; margin-top:24px;">
-        Kouichi Shinomiya<br />Founder, rar-zar
-      </p>
+      <p>僕がラーザーを作ったのは、毎日をほんの少し特別にしたいと思ったからです。</p>
+      <p>つけるだけで気分が少し変わる。そんな小さなきっかけを、形にしました。</p>
+      <p style="text-align:right; opacity:0.7; margin-top:24px;">Kouichi Shinomiya<br />Founder, rar-zar</p>
     </div>
   </section>
 
 </main>
 
-<footer>
-  © rar-zar
-</footer>
+<footer>© rar-zar</footer>
 
 </body>
 </html>
+
