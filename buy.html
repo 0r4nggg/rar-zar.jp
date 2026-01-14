@@ -54,23 +54,29 @@
       margin-bottom: 20px;
       color: #cfd6e1;
     }
-    p { margin: 0 0 16px; font-size: 15px; }
+    p {
+      margin: 0 0 16px;
+      font-size: 15px;
+    }
     ul {
       padding-left: 20px;
       margin: 0;
     }
-    li { margin-bottom: 10px; font-size: 14px; color: var(--sub); }
+    li {
+      margin-bottom: 10px;
+      font-size: 14px;
+      color: var(--sub);
+    }
     .status {
       margin-top: 32px;
       text-align: center;
       padding: 20px;
       border-radius: 12px;
       border: 1px dashed rgba(255,255,255,0.15);
-      color: var(--accent);
-      font-size: 16px;
-      font-weight: 500;
+      color: var(--sub);
+      font-size: 14px;
     }
-    .back, .order-button {
+    .back {
       display: inline-block;
       margin-top: 40px;
       padding: 10px 24px;
@@ -80,19 +86,16 @@
       text-decoration: none;
       font-size: 14px;
       transition: 0.3s;
-      cursor: pointer;
     }
-    .back:hover, .order-button:hover { background: rgba(58,160,255,0.08); }
-    form { margin-top: 20px; }
-    label { display: block; margin-bottom: 8px; font-size: 14px; color: var(--sub); }
-    select, input[type="number"] {
-      width: 100%;
-      padding: 8px;
-      margin-bottom: 16px;
-      border-radius: 6px;
-      border: 1px solid rgba(255,255,255,0.2);
-      background: rgba(255,255,255,0.05);
-      color: var(--text);
+    .back:hover {
+      background: rgba(58,160,255,0.08);
+    }
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 12px;
+      color: var(--sub);
+      opacity: 0.7;
     }
   </style>
 </head>
@@ -106,26 +109,28 @@
 <main>
 
   <div class="status">
-    Luxuryモデル 特別再販！ 限定20個
+    Luxury再販は応募総数が一定数に達したため終了しました。<br>
+    当選者は後日お知らせします。
   </div>
 
-  <section class="card" id="orderSection">
-    <h2>注文フォーム</h2>
-    <form id="orderForm">
-      <label for="model">モデルを選択</label>
-      <select id="model" name="model" required>
-        <option value="Luxury">Luxury Model - ¥70,000</option>
-      </select>
-      <label for="quantity">数量</label>
-      <input type="number" id="quantity" name="quantity" min="1" max="1" value="1" readonly />
-      <button type="submit" class="order-button">抽選に参加する</button>
-    </form>
+  <section class="card">
+    <h2>販売について</h2>
+    <p>
+      rar-zarの製品は、数量限定での抽選販売を基本としています。
+    </p>
+    <p>
+      常時販売は行っておらず、
+      販売時期・数量はすべて不定期で決定されます。
+    </p>
+    <p>
+      次回の販売については、
+      本ページおよび公式案内にてお知らせします。
+    </p>
   </section>
 
   <section class="card">
     <h2>注意事項</h2>
     <ul>
-      <li>人気商品につき、各モデル1点のみ抽選参加可能となります。</li>
       <li>転売目的での購入は禁止しています。</li>
       <li>フリマアプリ・オークションサイト等への出品が確認された場合、今後の抽選対象から除外される場合があります。</li>
       <li>購入権利の第三者への譲渡はできません。</li>
@@ -138,23 +143,9 @@
 
 </main>
 
-<footer>© rar-zar</footer>
-
-<script>
-  const form = document.getElementById('orderForm');
-  const orderSection = document.getElementById('orderSection');
-
-  if (localStorage.getItem('rarZarOrdered')) {
-    orderSection.innerHTML = '<h2>注文フォーム</h2><p style="color:#3aa0ff;">すでに抽選に参加済みです。</p>';
-  } else {
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert('抽選へのご参加ありがとうございました！抽選参加者はラーザー公式Instagramまで抽選に参加した旨をお伝えください！');
-      localStorage.setItem('rarZarOrdered', 'true');
-      orderSection.innerHTML = '<h2>注文フォーム</h2><p style="color:#3aa0ff;">すでに抽選に参加済みです。</p>';
-    });
-  }
-</script>
+<footer>
+  © rar-zar
+</footer>
 
 </body>
 </html>
