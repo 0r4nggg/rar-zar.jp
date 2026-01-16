@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<title>rar-zar Luxury Order | Winner Only</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+body {
+  margin: 0;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background: #000;
+  color: #fff;
+}
+.container {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 40px 20px 80px;
+}
+h1 {
+  text-align: center;
+  font-size: 26px;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+.subtitle {
+  text-align: center;
+  font-size: 13px;
+  color: #7aa7ff;
+  margin-bottom: 32px;
+}
+.notice {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 16px;
+  font-size: 13px;
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+.notice strong {
+  color: #9fc1ff;
+}
+.product {
+  margin-bottom: 32px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  padding-bottom: 24px;
+}
+.product-name {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+.price {
+  font-size: 20px;
+  color: #7aa7ff;
+}
+label {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 6px;
+  margin-top: 20px;
+  color: #aaa;
+}
+input {
+  width: 100%;
+  padding: 12px;
+  background: #111;
+  border: 1px solid #333;
+  color: #fff;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+input[readonly] {
+  color: #bbb;
+}
+.row {
+  display: flex;
+  gap: 12px;
+}
+.row > div {
+  flex: 1;
+}
+.btn {
+  margin-top: 36px;
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(90deg, #4d6fff, #7aa7ff);
+  border: none;
+  color: #000;
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.footer-note {
+  margin-top: 32px;
+  font-size: 11px;
+  color: #777;
+  line-height: 1.6;
+}
+#orderForm {
+  display: none;
+}
+#errorMsg {
+  color: #ff5555;
+  font-size: 13px;
+  margin-top: 12px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>rar-zar Luxury</h1>
+<div class="subtitle">Winner Exclusive Order Page</div>
+
+<div class="notice">
+  <strong>当選者専用ページ</strong><br>
+  本ページは、rar-zar Luxury 抽選販売にご当選された方のみがアクセスできる注文ページです。<br><br>
+  ・本商品は <strong>20個限定</strong> です<br>
+  ・<strong>転売・譲渡は禁止</strong> されています
+</div>
+
+<!-- 当選コード入力フォーム -->
+<div id="codeEntry">
+  <label>当選コードを入力してください</label>
+  <input type="text" id="winnerCodeInput" placeholder="当選コードを入力">
+  <button class="btn" onclick="checkCode()">送信</button>
+  <div id="errorMsg"></div>
+</div>
+
+<!-- 注文フォーム -->
+<form id="orderForm" onsubmit="orderComplete(event)">
+  <div class="product">
+    <div class="product-name">rar-zar Luxury Model</div>
+    <div class="price">¥70,000（税込）</div>
+  </div>
+
+  <label>クレジットカード番号</label>
+  <input type="text" value="49** **** **** ****" readonly>
+
+  <label>カード名義</label>
+  <input type="text" value="**** ******" readonly>
+
+  <div class="row">
+    <div>
+      <label>有効期限</label>
+      <input type="text" value="**/**" readonly>
+    </div>
+    <div>
+      <label>セキュリティコード</label>
+      <input type="text" value="***" readonly>
+    </div>
+  </div>
+
+  <button id="submitBtn" class="btn" type="submit">
+    注文を確定する
+  </button>
+</form>
+
+<div class="footer-note">
+  ※ 注文確定後のキャンセル・変更はできません。
+</div>
+</div>
+
+<script>
+const correctCode = "WIN-123456"; // ここに当選者コードを設定
+const submitBtn = document.getElementById('submitBtn');
+
+const isOrdered = localStorage.getItem('luxuryOrdered');
+if(isOrdered) {
+  submitBtn.disabled = true;
+  submitBtn.textContent = "注文済み";
+}
+
+function checkCode() {
+  const input = document.getElementById('winnerCodeInput').value.trim();
+  const errorMsg = document.getElementById('errorMsg');
+  if(input === correctCode) {
+    document.getElementById('codeEntry').style.display = "none";
+    document.getElementById('orderForm').style.display = "block";
+  } else {
+    errorMsg.textContent = "コードが一致しません。正しいコードを入力してください。";
+  }
+}
+
+function orderComplete(e) {
+  e.preventDefault();
+  if(!localStorage.getItem('luxuryOrdered')) {
+    alert(
+      "ご注文ありがとうございます。\n\n" +
+      "rar-zar Luxury のご注文を受け付けました。\n" +
+      "発送しましたら公式Instagramからご案内させていただきます。"
+    );
+    localStorage.setItem('luxuryOrdered', 'true');
+    submitBtn.disabled = true;
+    submitBtn.textContent = "注文済み";
+  }
+}
+</script>
+</body>
+</html>
+
